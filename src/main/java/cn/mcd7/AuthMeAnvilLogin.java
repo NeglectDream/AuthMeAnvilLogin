@@ -58,7 +58,7 @@ public final class AuthMeAnvilLogin extends JavaPlugin implements Listener {
     List<String> outItemForRegister_lore = config.getStringList("outItemForRegister.lore");
     int outItemForRegister_data = config.getInt("outItemForRegister.data");
 
-    AuthMeApi authMeApi = AuthMeApi.getInstance();
+    private AuthMeApi authMeApi;
 
     @Override
     public void onLoad() {
@@ -73,6 +73,12 @@ public final class AuthMeAnvilLogin extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         unsafePasswords.addAll(config.getStringList("set.unsafePasswords"));
+        authMeApi = AuthMeApi.getInstance();
+        if (authMeApi == null) {
+            getLogger().severe("AuthMeApi 未能初始化！请确保 AuthMe 插件已正确加载！");
+            getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
         Bukkit.getLogger().info("铁砧登录 V1.1 启动完成~");
         Bukkit.getLogger().info("作者: wangmeng123(3328429240)");
         getServer().getPluginManager().registerEvents(this, this);
