@@ -1,0 +1,11 @@
+name: AuthMeAnvilLogin
+version: '1.0.1'
+api-version: '1.16'
+main: cn.mcd7.AuthMeAnvilLogin
+prefix: 铁砧登录
+authors: [ wangmeng123 ]
+description: 春夏之梦铁砧登录插件
+website: https://www.mcd7.cn
+depend:
+  - PlaceholderAPI
+  - AuthMe

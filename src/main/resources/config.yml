@@ -1,0 +1,105 @@
+title:
+  # 各个页面的标题自定义，支持Papi变量解析
+  register: "&f%shift_raw_-60%%image_raw_dream:login-1%"
+  longOrShort: "&f%shift_raw_-60%%image_raw_dream:login-2%"
+  unsafe: "&f%shift_raw_-60%%image_raw_dream:login-3%"
+  login: "&f%shift_raw_-60%%image_raw_dream:login-5%"
+  error: "&f%shift_raw_-60%%image_raw_dream:login-6%"
+  clear: "&f%shift_raw_-60%%image_raw_dream:login-4%"
+set:
+  # 输入框的默认开头字符
+  firstChar: "➢ "
+  # 最短密码长度
+  passwordShort: 8
+  # 最长密码长度
+  passwordLong: 22
+  # 弱密码设置
+  unsafePasswords:
+    - "abc123"
+    - "123zbc"
+    - "123456"
+    - "qwerty"
+    - "12345"
+    - "54321"
+    - "help"
+    - "12345678"
+    - "password"
+    - "qwertyui"
+    - "123456789"
+    - "87654321"
+    - "1234567890"
+    - "asdfghjkl"
+    - "zxcvbnm,"
+    - "asdfghjk"
+    - "12312312"
+    - "123123123"
+    - "32132132"
+    - "321321321"
+sound:
+  # 如无需音效清关闭此选项
+  enable: true
+  # 默认值为高版本音效，低版本清单独设置音效
+  wrong: "ENTITY_WITHER_HURT"
+  success: "ENTITY_PLAYER_LEVELUP"
+  reset: "ENTITY_EXPERIENCE_ORB_PICKUP"
+# 第一个物品槽位设置
+leftItem:
+  # 无法设置name，为确保兼容性，与firstChar相同
+  type: "MAP"
+  # 颜色字符为 "§"
+  lore:
+    - ""
+    - "     §7请直接在上方输入你的密码"
+    - "    §7将自动为您执行登录/注册操作"
+    - " §a为确保账号安全，建议注册后绑定QQ群"
+    - "§a只需要将登录后聊天框验证码发到群内即可"
+    - ""
+    - "§6▶ §e左键 §a尝试进行登录/注册"
+  # 材质所需的自定义模型，如不需要或低版本可设置为0
+  data: 772
+# 第二个物品槽位设置
+rightItem:
+  # 显示的物品名
+  name: "&6清空输入框密码"
+  # 显示的物品类型
+  type: "MAP"
+  # 颜色字符为 "§"
+  lore:
+    - ""
+    - "§7使用后会清空当前输入框内密码"
+    - ""
+    - "§6▶ §e左键 §a清空输入框密码"
+  # 材质所需的自定义模型，如不需要或低版本可设置为0
+  data: 772
+# 第三个物品槽位设置，登录时显示的
+outItemForLogin:
+  # 显示的物品名
+  name: "&6确认密码"
+  # 显示的物品类型
+  type: "MAP"
+  # 颜色字符为 "§"
+  lore:
+    - ""
+    - "  §c请仔细确认使用的密码"
+    - "§c多次错误登录会被禁止进入"
+    - ""
+    - "§6▶ §e左键 §a登录账户"
+  # 材质所需的自定义模型，如不需要或低版本可设置为0
+  data: 772
+# 第三个物品槽位设置，注册时显示的
+outItemForRegister:
+  # 显示的物品名
+  name: "&6确认密码"
+  # 显示的物品类型
+  type: "MAP"
+  # 颜色字符为 "§"
+  lore:
+    - ""
+    - "    §c请确认密码并牢记你的密码"
+    - " §c建议使用笔/记事本,记录下你的密码"
+    - ""
+    - "    §c§n记住密码后再点击确认"
+    - ""
+    - "§6▶ §e左键 §a确认密码并注册账户"
+  # 材质所需的自定义模型，如不需要或低版本可设置为0
+  data: 772
