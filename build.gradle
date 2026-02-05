@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'cn.mcd7.AuthMeAnvilLogin'
-version = '1.1'
+version = '1.2'
 
 repositories {
     maven {
@@ -35,6 +35,9 @@ repositories {
 }
 
 dependencies {
+    // Local library
+    compileOnly(fileTree(dir: "lib", include: ["*.jar"]))
+
     implementation("net.wesjd:anvilgui:1.10.11-SNAPSHOT")
 }
 

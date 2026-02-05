@@ -33,6 +33,7 @@ public final class AuthMeAnvilLogin extends JavaPlugin implements Listener {
     String error = config.getString("title.error", "当前为密码错误页面的默认值").replace("&", "§");
     String clear = config.getString("title.clear", "当前为清空页面的默认值").replace("&", "§");
 
+    boolean protectGUI = config.getBoolean("set.protectGUI", true);
     String firstChar = config.getString("set.firstChar", "➢ ").replace("&", "").replace("§", "");
     int passwordShort = config.getInt("set.passwordShort", 8);
     int passwordLong = config.getInt("set.passwordLong", 22);
@@ -79,7 +80,7 @@ public final class AuthMeAnvilLogin extends JavaPlugin implements Listener {
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
-        Bukkit.getLogger().info("铁砧登录 V1.1 启动完成~");
+        Bukkit.getLogger().info("铁砧登录 V1.2 启动完成~");
         Bukkit.getLogger().info("作者: wangmeng123(3328429240)");
         getServer().getPluginManager().registerEvents(this, this);
     }
@@ -132,7 +133,7 @@ public final class AuthMeAnvilLogin extends JavaPlugin implements Listener {
                 list.add(AnvilGUI.ResponseAction.updateTitle(error, false));
                 return list;
             }
-        }).preventClose().itemLeft(leftItem).itemRight(rightItem).itemOutput(outItemForLogin).title(login).plugin(this);
+        }).itemLeft(leftItem).itemRight(rightItem).itemOutput(outItemForLogin).title(login).plugin(this);
 
         AnvilGUI.Builder anvilGUIForRegister = new AnvilGUI.Builder().onClick((slot, snapshot) -> {
             Player player = snapshot.getPlayer();
@@ -178,7 +179,13 @@ public final class AuthMeAnvilLogin extends JavaPlugin implements Listener {
             List<AnvilGUI.ResponseAction> list = new ArrayList<>();
             list.add(AnvilGUI.ResponseAction.close());
             return list;
-        }).preventClose().itemLeft(leftItem).itemRight(rightItem).itemOutput(outItemForRegister).title(register).plugin(this);
+        }).itemLeft(leftItem).itemRight(rightItem).itemOutput(outItemForRegister).title(register).plugin(this);
+
+        // 检测是否开启了保护GUI选项
+        if (protectGUI) {
+            anvilGUIForRegister.preventClose();
+            anvilGUIForLogin.preventClose();
+        }
 
         Bukkit.getScheduler().runTaskLater(this, () -> {
             if (authMeApi.isAuthenticated(eventPlayer) || authMeApi.isUnrestricted(eventPlayer)) {

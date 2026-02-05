@@ -7,6 +7,8 @@ title:
   error: "&f%shift_raw_-60%%image_raw_dream:login-6%"
   clear: "&f%shift_raw_-60%%image_raw_dream:login-4%"
 set:
+  # 强制保护页面无法关闭
+  protectGUI: true
   # 输入框的默认开头字符
   firstChar: "➢ "
   # 最短密码长度
